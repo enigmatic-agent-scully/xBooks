@@ -20,6 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     isbn: {
       type: DataTypes.INT,
       allowNull: true
+    },
+    coverimg: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    pubdate: {
+      type: DataTypes.DATEONLY
     }
   });
 };
