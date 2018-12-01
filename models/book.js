@@ -26,7 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     pubdate: {
-      type: DataTypes.DATEONLY
+      type: DataTypes.DATEONLY,
+      allowNull: true
     }
   });
+  return Book;
 };
