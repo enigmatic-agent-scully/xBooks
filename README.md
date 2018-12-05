@@ -42,3 +42,4 @@ Abdul & Andres
 * 100% automated test coverage of EVERY API endpoint
 * Lint builds and error free (zero errors, warnings)
 * At least a single automated UI test
+* Travis CI
