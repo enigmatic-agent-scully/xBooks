@@ -2,14 +2,17 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var PORT = process.env.PORT || 8080;
 var app = express();
-var exphbs = require("express-handlebars");
+var db = require("./models");
 
-app.use(express.static("views"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
 
-app.listen(PORT, () => {
-  console.log(`app now listening at http://localhost:${PORT}`);
+require("./routes/apiRoutes.js");
+require("./routes/htmlRoutes.js");
+
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`app now listening at http://localhost:${PORT}`);
+  });
 });

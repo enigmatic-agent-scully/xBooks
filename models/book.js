@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       len: [1, 300]
     },
     isbn: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     coverimg: {
