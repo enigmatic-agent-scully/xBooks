@@ -8,14 +8,22 @@ var submit = $('#submit');
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+<<<<<<< HEAD
   addUser: function(user) {
+=======
+  addUser: function(example) {
+>>>>>>> c5211c66acb56304397c128c77923b9a8a62766b
     return $.ajax({
       headers: {
         'Content-Type': 'application/json'
       },
       type: 'POST',
       url: 'api/users',
+<<<<<<< HEAD
       data: JSON.stringify(user)
+=======
+      data: JSON.stringify(example)
+>>>>>>> c5211c66acb56304397c128c77923b9a8a62766b
     });
   },
   getExamples: function() {
