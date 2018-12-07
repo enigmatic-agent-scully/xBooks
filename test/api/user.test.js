@@ -19,7 +19,7 @@ describe('GET /api/users', function() {
     });
   });
 
-  it('should find all examples', function(done) {
+  it('should find all users', function(done) {
     // Add some examples to the db to test with
     db.User.bulkCreate([
       { username: 'afds654', name: 'AJ', password: 'xxxxxxx' },
@@ -44,16 +44,14 @@ describe('GET /api/users', function() {
           .to.be.an('object')
           .that.includes({
             username: 'afds654',
-            name: 'AJ',
-            password: 'xxxxxxx'
+            name: 'AJ'
           });
 
         expect(responseBody[1])
           .to.be.an('object')
           .that.includes({
             username: 'wueyr890',
-            name: 'BJ',
-            password: 'xxxxxxx'
+            name: 'BJ'
           });
 
         // The `done` function is used to end any asynchronous tests

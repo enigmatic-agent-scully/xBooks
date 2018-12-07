@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     name: DataTypes.STRING,
     password: DataTypes.STRING,
-    dateJoined: DataTypes.TIMESTAMP
+    dateJoined: DataTypes.DATE
   });
 
   User.associate = models => {
