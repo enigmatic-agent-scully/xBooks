@@ -1,4 +1,4 @@
-# xBoox 
+# xBooks 
 
 ### Team Members
 
@@ -8,15 +8,15 @@
 * Andres Inciarte || [andresnew00](https://github.com/andresnew00)
 
 ### Project Description
-A streamlined, simple organizer for your personal library is here! This app allows you to add books to your library using information from Google Books API.
+A streamlined, simple organizer for your personal library is here! This app allows you to add books to your library, either by entering the information manually or using search result information from Google Books API.
 
 MVP
 * Add book details to database
 * Display book info upon select
 * Sort columns
+* Use Google Books API to fill in missing book details, including photo of cover
 
 Possible Upgrades
-* Use Google Books API to fill in missing book details, including photo of cover
 * Connect to social media
 * Wishlist
 * Connect to Amazon/online retail to purchase books
