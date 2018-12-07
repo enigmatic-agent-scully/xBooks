@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Book = sequelize.define("Book", {
+  var Book = sequelize.define('Book', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,5 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     }
   });
+
+  Book.associate = models => {
+    Book.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Book;
 };
