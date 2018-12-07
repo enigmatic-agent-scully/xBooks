@@ -11,33 +11,41 @@ $(document).ready(function(){
         else {
         
 
-            const url = '';
-            const img = '';
-            const title = '';
-            const authors = '';
+            let url = '';
+            let img = '';
+            let title = '';
+            let authors = '';
 
-            $.get('https://www.googleapis.com/books/v1/volumes?q=' + search,function(response){
+            $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(function(response){
 
-            console.log(response.items[0]);
+                console.log(response.items);
 
-                for (i = 0; i < response.items.length ; i++);
+                const results = response.items;
 
-                title = $('<h5>' + response.items[i].volumeInfo.title + '</h5>' );
+                console.log(results[0]);
 
-                authors = $('<h5>' + response.items[i].volumeInfo.authors + '</h5>' );
+                for (i = 0; i < results.length ; i++){
 
-                img = $('<img><br><a href=' + response.items[i].volumeInfo.infoLink + '><button class="pure-button pure-button-primary">Read more</button> </a>' );
+                title = $('<h5 class="title">' + results[i].volumeInfo.title + '</h5>' );
 
-                url = response.items[i].volumeInfo.imageLinks.thumbnail;
+                authors = $('<h5 class="authors">' + results[i].volumeInfo.authors + '</h5>' );
+
+                img = $('<img class="imgStyles"><br><a href=' + results[i].volumeInfo.infoLink + '><button class="pure-button pure-button-primary">Read more</button> </a>' );
+
+                url = results[i].volumeInfo.imageLinks.thumbnail;
 
                 img.attr('src', url); //attach image url
 
-                title.appendTo('#result');
+                const newBook = $("<div class='newDiv'>");
 
-                authors.appendTo('#result');
+                title.appendTo(newBook);
 
-                img.appendTo('#result');
+                authors.appendTo(newBook);
 
+                img.appendTo(newBook);
+
+                newBook.appendTo('#result');
+                };
             });
         }
     });

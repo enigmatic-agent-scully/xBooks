@@ -8,3 +8,14 @@ body {
 .pure-menu-horizontal .pure-menu-heading, .pure-menu-horizontal .pure-menu-item, .pure-menu-horizontal .pure-menu-separator, .pure-menu-link {
     color: white;
 }
+.newDiv {
+    display: inline-block;
+    width: 25%;
+    margin: auto;
+}
+.title, .authors , .imgStyles {
+    margin: auto;
+}
+#results {
+    margin-left: 20px;
+}
