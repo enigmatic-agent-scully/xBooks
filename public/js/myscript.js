@@ -1,58 +1,62 @@
-$(document).ready(function(){
+$(document).ready(function() {
   //comment to push
-  $('#bookSearch').on('click', function(){
+  $('#bookSearch').on('click', function() {
+    const search = $('#books').val();
 
-      const search = $('#books').val();
-      
-      if (search === '') {
-          alert('please enter a book title')
-      }
+    if (search === '') {
+      alert('please enter a book title');
+    } else {
+      let url = '';
+      let img = '';
+      let title = '';
+      let authors = '';
+      let buttons = '';
+      //API call
+      $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(
+        function(response) {
+          console.log(response.items);
 
-      else {
-      
+          const results = response.items;
 
-          let url = '';
-          let img = '';
-          let title = '';
-          let authors = '';
-          //API call
-          $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(function(response){
+          for (i = 0; i < results.length; i++) {
+            title = $(
+              '<h5 class="title">' + results[i].volumeInfo.title + '</h5>'
+            );
 
-              console.log(response.items);
+            authors = $(
+              '<h5 class="authors">' + results[i].volumeInfo.authors + '</h5>'
+            );
 
-              const results = response.items;
+            img = $('<img class="imgStyles"><br>');
 
-              console.log(results[0]);
+            buttons = $(
+              '<button class="pure-button pure-button-primary" id=' +
+                results[i].volumeInfo.id +
+                '>Add</button>'
+            );
 
-              for (i = 0; i < results.length ; i++){
+            url = results[i].volumeInfo.imageLinks.thumbnail;
 
-              title = $('<h5 class="title">' + results[i].volumeInfo.title + '</h5>' );
+            img.attr('src', url); //attach image url
 
-              authors = $('<h5 class="authors">' + results[i].volumeInfo.authors + '</h5>' );
+            const newBook = $("<div class='newDiv'>");
+            const divInside = $("<div class='innerDiv'>");
 
-              img = $('<img class="imgStyles"><br><a href=' + results[i].volumeInfo.infoLink + '><button class="pure-button pure-button-primary">Read more</button> </a>' );
+            img.appendTo(divInside);
 
-              url = results[i].volumeInfo.imageLinks.thumbnail;
+            title.appendTo(divInside);
 
-              img.attr('src', url); //attach image url
+            authors.appendTo(divInside);
 
-              const newBook = $("<div class='newDiv'>");
-              const divInside = $("<div class='innerDiv'>")
+            buttons.appendTo(divInside);
 
-              title.appendTo(divInside);
+            divInside.appendTo(newBook);
 
-              authors.appendTo(divInside);
-
-              img.appendTo(divInside);
-
-              divInside.appendTo(newBook);
-
-              newBook.appendTo('#result');
-
-              
-              };
-          });
-      }
+            newBook.appendTo('#result');
+          }
+        }
+      );
+    }
   });
 
   return false;
