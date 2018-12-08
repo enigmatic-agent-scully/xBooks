@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    //something else
     //comment to push
     $('#bookSearch').on('click', function(){
 
