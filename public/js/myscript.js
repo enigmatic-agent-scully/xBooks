@@ -1,42 +1,61 @@
 $(document).ready(function() {
+  //comment to push
   $('#bookSearch').on('click', function() {
     const search = $('#books').val();
 
     if (search === '') {
       alert('please enter a book title');
     } else {
-      const url = '';
-      const img = '';
-      const title = '';
-      const authors = '';
+      let url = '';
+      let img = '';
+      let title = '';
+      let authors = '';
+      let buttons = '';
+      //API call
+      $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(
+        function(response) {
+          console.log(response.items);
 
-      $.get('https://www.googleapis.com/books/v1/volumes?q=' + search, function(
-        response
-      ) {
-        console.log(response);
+          const results = response.items;
 
-        for (i = 0; i < response.items.length; i++);
+          for (i = 0; i < results.length; i++) {
+            title = $(
+              '<h5 class="title">' + results[i].volumeInfo.title + '</h5>'
+            );
 
-        title = $(`<h5>${response.items[i].volumeInfo.title}</h5>`);
+            authors = $(
+              '<h5 class="authors">' + results[i].volumeInfo.authors + '</h5>'
+            );
 
-        authors = $(`<h5>${response.items[i].volumeInfo.authors}</h5>`);
+            img = $('<img class="imgStyles"><br>');
 
-        img = $(
-          `<img><br><a href='${
-            response.items[i].volumeInfo.infoLink
-          }'><button class="pure-button pure-button-primary">Read more</button> </a>`
-        );
+            buttons = $(
+              '<button class="pure-button pure-button-primary" id=' +
+                results[i].volumeInfo.id +
+                '>Add</button>'
+            );
 
-        url = response.items[i].volumeInfo.imageLinks.thumbnail;
+            url = results[i].volumeInfo.imageLinks.thumbnail;
 
-        img.attr('src', url); //attach image url
+            img.attr('src', url); //attach image url
 
-        title.appendTo('#result');
+            const newBook = $("<div class='newDiv'>");
+            const divInside = $("<div class='innerDiv'>");
 
-        authors.appendTo('#result');
+            img.appendTo(divInside);
 
-        img.appendTo('#result');
-      });
+            title.appendTo(divInside);
+
+            authors.appendTo(divInside);
+
+            buttons.appendTo(divInside);
+
+            divInside.appendTo(newBook);
+
+            newBook.appendTo('#result');
+          }
+        }
+      );
     }
   });
 
