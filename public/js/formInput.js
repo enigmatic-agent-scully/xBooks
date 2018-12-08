@@ -8,14 +8,14 @@ var submit = $('#submit');
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  addUser: function(example) {
+  addUser: function(user) {
     return $.ajax({
       headers: {
         'Content-Type': 'application/json'
       },
       type: 'POST',
       url: 'api/users',
-      data: JSON.stringify(example)
+      data: JSON.stringify(user)
     });
   },
   getExamples: function() {
@@ -100,5 +100,5 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on('click', handleFormSubmit);
 $exampleList.on('click', '.delete', handleDeleteBtnClick);
 
-
 module.exports(API);
+
