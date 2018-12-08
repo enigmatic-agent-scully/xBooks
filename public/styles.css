@@ -1,5 +1,5 @@
 body {
-    background-image: url(../images/janko-ferlic-174927-unsplash.jpg);
+    background-image: url(images/janko-ferlic-174927-unsplash.jpg);
     background-size: cover;
 }
 .pure-form {
@@ -15,7 +15,11 @@ body {
 }
 .title, .authors , .imgStyles {
     margin: auto;
+    align-items: right;
 }
 #results {
     margin-left: 20px;
+}
+.innerDiv{
+    margin: auto;
 }

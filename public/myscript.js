@@ -37,14 +37,19 @@ $(document).ready(function(){
                 img.attr('src', url); //attach image url
 
                 const newBook = $("<div class='newDiv'>");
+                const divInside = $("<div class='innerDiv'>")
 
-                title.appendTo(newBook);
+                title.appendTo(divInside);
 
-                authors.appendTo(newBook);
+                authors.appendTo(divInside);
 
-                img.appendTo(newBook);
+                img.appendTo(divInside);
+
+                divInside.appendTo(newBook);
 
                 newBook.appendTo('#result');
+
+                
                 };
             });
         }
