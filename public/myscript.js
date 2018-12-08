@@ -15,7 +15,7 @@ $(document).ready(function(){
             let img = '';
             let title = '';
             let authors = '';
-
+            //API call
             $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(function(response){
 
                 console.log(response.items);
