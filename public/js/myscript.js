@@ -1,43 +1,58 @@
-$(document).ready(function() {
-  $('#bookSearch').on('click', function() {
-    const search = $('#books').val();
+$(document).ready(function(){
+  //comment to push
+  $('#bookSearch').on('click', function(){
 
-    if (search === '') {
-      alert('please enter a book title');
-    } else {
-      const url = '';
-      const img = '';
-      const title = '';
-      const authors = '';
+      const search = $('#books').val();
+      
+      if (search === '') {
+          alert('please enter a book title')
+      }
 
-      $.get('https://www.googleapis.com/books/v1/volumes?q=' + search, function(
-        response
-      ) {
-        console.log(response);
+      else {
+      
 
-        for (i = 0; i < response.items.length; i++);
+          let url = '';
+          let img = '';
+          let title = '';
+          let authors = '';
+          //API call
+          $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(function(response){
 
-        title = $(`<h5>${response.items[i].volumeInfo.title}</h5>`);
+              console.log(response.items);
 
-        authors = $(`<h5>${response.items[i].volumeInfo.authors}</h5>`);
+              const results = response.items;
 
-        img = $(
-          `<img><br><a href='${
-            response.items[i].volumeInfo.infoLink
-          }'><button class="pure-button pure-button-primary">Read more</button> </a>`
-        );
+              console.log(results[0]);
 
-        url = response.items[i].volumeInfo.imageLinks.thumbnail;
+              for (i = 0; i < results.length ; i++){
 
-        img.attr('src', url); //attach image url
+              title = $('<h5 class="title">' + results[i].volumeInfo.title + '</h5>' );
 
-        title.appendTo('#result');
+              authors = $('<h5 class="authors">' + results[i].volumeInfo.authors + '</h5>' );
 
-        authors.appendTo('#result');
+              img = $('<img class="imgStyles"><br><a href=' + results[i].volumeInfo.infoLink + '><button class="pure-button pure-button-primary">Read more</button> </a>' );
 
-        img.appendTo('#result');
-      });
-    }
+              url = results[i].volumeInfo.imageLinks.thumbnail;
+
+              img.attr('src', url); //attach image url
+
+              const newBook = $("<div class='newDiv'>");
+              const divInside = $("<div class='innerDiv'>")
+
+              title.appendTo(divInside);
+
+              authors.appendTo(divInside);
+
+              img.appendTo(divInside);
+
+              divInside.appendTo(newBook);
+
+              newBook.appendTo('#result');
+
+              
+              };
+          });
+      }
   });
 
   return false;
