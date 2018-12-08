@@ -1,22 +1,24 @@
 $(document).ready(function() {
   //comment to push
+  let results;
+  let url = '';
+  let img = '';
+  let title = '';
+  let authors = '';
+  let buttons = '';
+
   $('#bookSearch').on('click', function() {
     const search = $('#books').val();
 
     if (search === '') {
       alert('please enter a book title');
     } else {
-      let url = '';
-      let img = '';
-      let title = '';
-      let authors = '';
-      let buttons = '';
       //API call
       $.get('https://www.googleapis.com/books/v1/volumes?q=' + search).then(
         function(response) {
           console.log(response.items);
 
-          const results = response.items;
+          results = response.items;
 
           for (i = 0; i < results.length; i++) {
             title = $(
@@ -30,8 +32,8 @@ $(document).ready(function() {
             img = $('<img class="imgStyles"><br>');
 
             buttons = $(
-              '<button class="pure-button pure-button-primary" id=' +
-                results[i].volumeInfo.id +
+              '<button type="submit" class="pure-button pure-button-primary" id=' +
+                [i] +
                 '>Add</button>'
             );
 
@@ -56,6 +58,34 @@ $(document).ready(function() {
           }
         }
       );
+    }
+  });
+
+  $('button[type="submit"]').on('click', e => {
+    e.preventDefault();
+    id = $(this).attr('id');
+    console.log(id);
+    for (var i = 0; i < results.length; i++) {
+      if (id === [i]) {
+        var bookObj = {
+          title: results[i].volumeInfo.title,
+          authors: results[i].volumeInfo.authors,
+          genres: results[i].volumeInfo.categories,
+          isbn: results[i].volumeInfo.industryIdentifiers[0].identifier,
+          coverimg: results[i].volumeInfo.imageLinks.thumbnail,
+          pubdate: results[i].volumeInfo.publishedDate
+        };
+        console.log(bookObj);
+        $.ajax({
+          url: '/api/books',
+          type: 'POST',
+          data: bookObj,
+          dataType: 'json',
+          success: () => {
+            console.log('added new book!');
+          }
+        });
+      }
     }
   });
 
