@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple, user-friendly personal library manager!"
+    />
+    <title>xBooks</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+      integrity="sha384-"
+      crossorigin="anonymous"
+    />
+
+    <!--[if lte IE 8]>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css"
+      />
+    <![endif]-->
+    <!-- [if gt IE 8]><! -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css"
+    />
+    <!-- <![endif] -->
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="./styles/pricing-old-ie.css" />
+    <![endif]-->
+    <!-- [if gt IE 8]><! -->
+    <link rel="stylesheet" href="./styles/pricing.css" />
+    <!-- <![endif] -->
+  </head>
+  <body>
+    <div id="layout">
+      <div id="menu">
+        <div class="pure-menu pure-menu-horizontal">
+          <a href="#" class="pure-menu-heading">xBooks</a>
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+              <a class="pure-menu-link" id="loginLink">My Books</a>
+            </li>
+            <li class="pure-menu-item">
+              <a data-toggle="modal" href="#loginModal" class="pure-menu-link"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header">
+        <div class="banner">
+          <h1 class="banner-head">
+            xBooks<br />
+            Manage your personal library today!<br />
+          </h1>
+        </div>
+      </div>
+      <div id="content">
+        <div class="l-content">
+          <div class="information pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="l-box">
+                <h3 class="information-head">Track Your Library</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="l-box">
+                <h3 class="information-head">Make A Wishlist</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-tables pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="pricing-table pricing-table-free">
+                <div class="pricing-table-header">
+                  <h2>.</h2>
+                  <span class="pricing-table-price"> Library </span>
+                  <h2>.</h2>
+                </div>
+
+                <button class="button-choose pure-button">
+                  <a href="/addBook" class="button">+</a>
+                </button>
+              </div>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-2">
+              <div class="pricing-table pricing-table-enterprise">
+                <div class="pricing-table-header">
+                  <h2>.</h2>
+
+                  <span class="pricing-table-price">
+                    Wishlist <span>.</span>
+                  </span>
+                </div>
+
+                <button class="button-choose pure-button">+</button>
+              </div>
+            </div>
+          </div>
+          <!-- end pricing-tables -->
+
+          <!-- end information -->
+        </div>
+        <div
+          id="loginModal"
+          class="modal hide fade in"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="loginModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-header">
+            <h1 id="loginModalLabel">Login or Register for xBooks!</h1>
+          </div>
+          <div class="modal-body">
+            <div class="pure-g">
+              <div class="pure-u-1-2"><p>Register</p></div>
+              <div class="pure-u-1-2"><p>Login</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- end l-content -->
+      </div>
+      <div class="footer">
+        <div class="footer l-box">
+          <p>
+            Created by
+            <a href="https://github.com/enigmatic-agent-scully">AJ</a>,
+            <a href="https://github.com/haydest">Hayden</a>,
+            <a href="https://github.com/andresnew000">Andres</a>, and
+            <a href="https://github.com/ahs4448">Abdul</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./js/loginRegister.js"></script>
+  </body>
+</html>
