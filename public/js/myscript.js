@@ -5,8 +5,9 @@ $(document).ready(function() {
   let img = '';
   let title = '';
   let authors = '';
+  let addButton = '';
+  let wishButton = '';
   let buttons = '';
-
   $('#bookSearch').on('click', function() {
     const search = $('#books').val();
 
@@ -31,17 +32,19 @@ $(document).ready(function() {
 
             img = $('<img class="imgStyles"><br>');
 
-            // buttons = $(
-            //   '<a class="pure-button pure-button-primary bookAdd" book-id=' +
-            //     [i] +
-            //     '>Add</a>'
-            // );
-            buttons = $(`<a class='pure-button pure-button-primary bookAdd'>`);
+            addButton = $(
+              `<a class='pure-button pure-button-primary bookAdd'>`
+            );
 
-            buttons.text('Add');
+            wishButton = $(
+              `<a class='pure-button pure-button-primary wishAdd'>`
+            );
 
-            buttons.attr('book-id', i);
+            addButton.text('Add');
+            wishButton.text('Wish');
 
+            addButton.attr('book-id', i);
+            wishButton.attr('book-id', i);
             url = results[i].volumeInfo.imageLinks.thumbnail;
 
             img.attr('src', url); //attach image url
@@ -55,7 +58,9 @@ $(document).ready(function() {
 
             authors.appendTo(divInside);
 
-            buttons.appendTo(divInside);
+            addButton.appendTo(divInside);
+
+            wishButton.appendTo(divInside);
 
             divInside.appendTo(newBook);
 
@@ -66,33 +71,47 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on('click', '.bookAdd', e => {
-    //e.preventDefault();
+  $(document).on('click', '.bookAdd', function(e) {
+    e.preventDefault();
+    var bookObj = {};
     var id = $(this).attr('book-id');
-    console.log('id');
-    for (var i = 0; i < results.length; i++) {
-      if (id === [i]) {
-        var bookObj = {
-          title: results[i].volumeInfo.title,
-          authors: results[i].volumeInfo.authors,
-          genres: results[i].volumeInfo.categories,
-          isbn: results[i].volumeInfo.industryIdentifiers[0].identifier,
-          coverimg: results[i].volumeInfo.imageLinks.thumbnail,
-          pubdate: results[i].volumeInfo.publishedDate
-        };
-        console.log(bookObj);
-        $.ajax({
-          url: '/api/books',
-          type: 'POST',
-          data: bookObj,
-          dataType: 'json',
-          success: () => {
-            console.log('added new book!');
-          }
-        });
-      }
-    }
-  });
+    if ((results[id].volumeInfo.authors.length = 1)) {
+      var author = results[id].volumeInfo.authors[0];
+      bookObj = {
+        title: results[id].volumeInfo.title,
+        author: author,
+        genres: results[id].volumeInfo.categories[0],
+        isbn: results[id].volumeInfo.industryIdentifiers[0].identifier,
+        coverimg: results[id].volumeInfo.imageLinks.thumbnail,
+        pubdate: results[id].volumeInfo.publishedDate
+      };
+    } else {
+      var authorsArr = [];
 
-  // return false;
+      for (var i = 0; i < results[id].volumeInfo.authors.length; i++) {
+        authors.push(results[id].volumeInfo.authors[i]);
+      }
+
+      var authors = authorsArr.join();
+
+      bookObj = {
+        title: results[id].volumeInfo.title,
+        author: authors,
+        genres: results[id].volumeInfo.categories.join(),
+        isbn: results[id].volumeInfo.industryIdentifiers[0].identifier,
+        coverimg: results[id].volumeInfo.imageLinks.thumbnail,
+        pubdate: results[id].volumeInfo.publishedDate
+      };
+    }
+    console.log(bookObj);
+    $.ajax({
+      url: '/api/books',
+      type: 'POST',
+      data: bookObj,
+      dataType: 'json',
+      success: () => {
+        console.log('added new book!');
+      }
+    });
+  });
 });
