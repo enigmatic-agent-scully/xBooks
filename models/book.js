@@ -3,13 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 300]
-      }
+      len: [1, 254]
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
       len: [1, 300]
     },
     genres: {
@@ -18,15 +15,16 @@ module.exports = (sequelize, DataTypes) => {
       len: [1, 300]
     },
     isbn: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.STRING,
+      allowNull: true,
+      len: [1, 15]
     },
     coverimg: {
       type: DataTypes.STRING,
       allowNull: true
     },
     pubdate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: true
     }
   });
