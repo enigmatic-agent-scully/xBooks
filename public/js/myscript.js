@@ -20,7 +20,7 @@ $(document).ready(function() {
 
           results = response.items;
 
-          for (i = 0; i < results.length; i++) {
+          for (var i = 0; i < results.length; i++) {
             title = $(
               '<h5 class="title">' + results[i].volumeInfo.title + '</h5>'
             );
@@ -31,11 +31,16 @@ $(document).ready(function() {
 
             img = $('<img class="imgStyles"><br>');
 
-            buttons = $(
-              '<button type="submit" class="pure-button pure-button-primary" id=' +
-                [i] +
-                '>Add</button>'
-            );
+            // buttons = $(
+            //   '<a class="pure-button pure-button-primary bookAdd" book-id=' +
+            //     [i] +
+            //     '>Add</a>'
+            // );
+            buttons = $(`<a class='pure-button pure-button-primary bookAdd'>`);
+
+            buttons.text('Add');
+
+            buttons.attr('book-id', i);
 
             url = results[i].volumeInfo.imageLinks.thumbnail;
 
@@ -61,10 +66,10 @@ $(document).ready(function() {
     }
   });
 
-  $('button[type="submit"]').on('click', e => {
-    e.preventDefault();
-    id = $(this).attr('id');
-    console.log(id);
+  $(document).on('click', '.bookAdd', e => {
+    //e.preventDefault();
+    var id = $(this).attr('book-id');
+    console.log('id');
     for (var i = 0; i < results.length; i++) {
       if (id === [i]) {
         var bookObj = {
@@ -89,5 +94,5 @@ $(document).ready(function() {
     }
   });
 
-  return false;
+  // return false;
 });

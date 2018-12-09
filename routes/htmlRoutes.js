@@ -5,6 +5,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
   app.get('/search', function(req, res) {
-    res.sendFile(path.join(__dirname, 'search.html'));
+    res.sendFile(path.join(__dirname, './../public/search.html'));
   });
 };
