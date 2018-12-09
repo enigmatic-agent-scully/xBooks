@@ -9,8 +9,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-require('./routes/apiRoutes.js');
-require('./routes/htmlRoutes.js');
+require('./routes/apiRoutes.js')(app);
+require('./routes/htmlRoutes.js')(app);
 
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {

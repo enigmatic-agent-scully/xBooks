@@ -31,12 +31,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Book.associate = models => {
-    Book.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
   return Book;
 };
