@@ -66,13 +66,14 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on('click', '.bookAdd', e => {
-    //e.preventDefault();
+  $(document).on('click', '.bookAdd', function(e) {
+    e.preventDefault();
     var id = $(this).attr('book-id');
-    console.log('id');
+    console.log(id);
+    var bookObj;
     for (var i = 0; i < results.length; i++) {
       if (id === [i]) {
-        var bookObj = {
+        bookObj = {
           title: results[i].volumeInfo.title,
           authors: results[i].volumeInfo.authors,
           genres: results[i].volumeInfo.categories,
