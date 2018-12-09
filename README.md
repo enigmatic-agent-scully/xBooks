@@ -13,7 +13,6 @@ A streamlined, simple organizer for your personal library is here! This app allo
 MVP
 * Add book details to database
 * Display book info upon select
-* Sort columns
 * Use Google Books API to fill in missing book details, including photo of cover
 
 Possible Upgrades
@@ -29,13 +28,20 @@ Future Stuff
 
 ### Rough Breakdown of Tasks
 
-AJ & Hayden
-* Backend functions
-* API, server-side connections
+AJ 
+* Intergrate Pure CSS template - ✓
+* Sequelize
 
-Abdul & Andres
-* Frontend functions
-* Add Book form
+Hayden
+* Project setup - ✓
+* Testing! 
+
+Andres
+* Search and results display - ✓
+* Connecting Google API to search - ✓
+
+Abdul
+* Pure CSS Layout - ✓
 
 #### Four-person group requirements
 * npm run scripts for each of the following
