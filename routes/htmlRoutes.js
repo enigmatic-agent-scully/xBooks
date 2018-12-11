@@ -8,6 +8,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, './../public/search.html'));
   });
   app.get('/library', function(req, res) {
-    res.sendFile(path.join(__dirname, './../public/library.html'));
+    res.sendFile(path.join(__dirname, './../public/Library.html'));
   });
 };
