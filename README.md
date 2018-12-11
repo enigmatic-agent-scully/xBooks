@@ -1,5 +1,7 @@
 # xBooks
 
+With xBooks, you can keep a comprehensive digital collection of your physical library. With its GoogleBooks API intergration, xBooks allows you to add all the relevant book details to your library, including the cover image, title, author, genre, and ISBN.
+
 ### Team Members
 
 - AJ Jordan || [enigmatic-agent-scully](https://github.com/enigmatic-agent-scully)
@@ -36,7 +38,7 @@ AJ
 
 - Intergrate Pure CSS template - ✓
 - Sequelize - ✓
-- API Routes
+- API/html routing - ✓
 
 Hayden
 
@@ -50,7 +52,7 @@ Andres
 
 Abdul
 
-- Pure CSS Layout - ✓
+- Pure CSS Layouts: index, library - ✓
 
 #### Four-person group requirements
 
