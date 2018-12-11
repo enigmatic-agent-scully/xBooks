@@ -43,57 +43,38 @@
           <a href="#" class="pure-menu-heading">xBooks</a>
           <ul class="pure-menu-list">
             <li class="pure-menu-item">
-              <a class="pure-menu-link" id="loginLink">My Books</a>
+              <a class="pure-menu-link" href="/library">My Books</a>
+            </li>
+            <li class="pure-menu-item">
+              <a class="pure-menu-link" href="/search">Add Books</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="header">
         <div class="banner">
-          <h1 class="banner-head">
-            xBooks<br />
-            Manage your personal library today!<br />
-          </h1>
+          <h1 class="banner-head">xBooks<br /></h1>
         </div>
       </div>
       <div id="content">
         <div class="l-content">
           <div class="information pure-g">
-            <div class="pure-u-1 pure-u-md-1-2">
+            <div class="pure-u-1 pure-u-md-1-1">
               <div class="l-box">
-                <h3 class="information-head">Track Your Library</h3>
+                <h3 class="information-head">
+                  Take Control of Your Personal Library
+                </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-            </div>
-
-            <div class="pure-u-1 pure-u-md-1-2">
-              <div class="l-box">
-                <h3 class="information-head">Make A Wishlist</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  With xBooks, you can keep a comprehensive digital collection
+                  of your physical library. With its GoogleBooks API
+                  intergration, xBooks allows you to add all the relevant book
+                  details to your library, including the cover image.
                 </p>
               </div>
             </div>
           </div>
           <div class="pricing-tables pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-              <div class="pricing-table pricing-table-free">
-                <div class="pricing-table-header">
-                  <h2>.</h2>
-                  <span class="pricing-table-price"> Library </span>
-                  <h2>.</h2>
-                </div>
-
-                <button class="button-choose pure-button">
-                  <a href="/library" class="button">+</a>
-                </button>
-              </div>
-            </div>
-            <div class="pure-u-1 pure-u-md-1-3">
+            <div class="pure-u-1 pure-u-md-1-2">
               <div class="pricing-table pricing-table-free">
                 <div class="pricing-table-header">
                   <h2>.</h2>
@@ -106,41 +87,25 @@
                 </button>
               </div>
             </div>
-            <div class="pure-u-1 pure-u-md-1-3">
+
+            <div class="pure-u-1 pure-u-md-1-2">
               <div class="pricing-table pricing-table-enterprise">
                 <div class="pricing-table-header">
                   <h2>.</h2>
 
                   <span class="pricing-table-price">
-                    Wishlist <span>.</span>
+                    Library <span>.</span>
                   </span>
                 </div>
 
-                <button class="button-choose pure-button">+</button>
+                <button class="button-choose pure-button">
+                  <a href="/search" class="button">+</a>
+                </button>
               </div>
             </div>
           </div>
           <!-- end pricing-tables -->
-
           <!-- end information -->
-        </div>
-        <div
-          id="loginModal"
-          class="modal hide fade in"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="loginModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-header">
-            <h1 id="loginModalLabel">Login or Register for xBooks!</h1>
-          </div>
-          <div class="modal-body">
-            <div class="pure-g">
-              <div class="pure-u-1-2"><p>Register</p></div>
-              <div class="pure-u-1-2"><p>Login</p></div>
-            </div>
-          </div>
         </div>
         <!-- end l-content -->
       </div>
@@ -156,6 +121,5 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="./js/loginRegister.js"></script>
   </body>
 </html>

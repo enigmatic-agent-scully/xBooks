@@ -30,4 +30,14 @@ module.exports = function(app) {
       res.json(dbBook);
     });
   });
+
+  app.delete('/api/books/:id', (req, res) => {
+    db.Book.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbBook => {
+      res.json(dbTodo);
+    });
+  });
 };
