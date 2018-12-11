@@ -7,9 +7,10 @@ $(document).ready(function() {
   let authors = '';
   let addButton = '';
   let wishButton = '';
-  let buttons = '';
+
   $('#bookSearch').on('click', function() {
     const search = $('#books').val();
+    $('#result').empty();
 
     if (search === '') {
       alert('please enter a book title');
