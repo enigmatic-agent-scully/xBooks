@@ -1,37 +1,104 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../../public/js');
-const expect = chai.expect;
+// Get references to page elements
+var bookTitle = $('#bookTitle');
+var bookAuthor = $('#bookAuthor');
+var bookGenre = $('#bookGenre');
+var bookISBN = $('#bookISBN');
+var bookCover = $('#bookCover');
+var submit = $('#submit');
 
-chai.use(chaiHttp);
-
-var request;
-
-describe('API', function() {
-  it('should add users', function(done) {
-    API.addUser.bulkCreate([
-      { username: 'afds654', name: 'AJ', password: 'xxxxxxx' },
-      { username: 'wueyr890', name: 'BJ', password: 'xxxxxxx' }
-    ]).then(function() {
-      var responseBody = res.body;  
-      expect(responseBody)
-        .to.be.an('array')
-        .that.has.lengthOf(2);
-      expect(responseBody[0])
-        .to.be.an('object')
-        .that.includes({
-          username: 'afds654', 
-          name: 'AJ', 
-          password: 'xxxxxxx'
-        });
-      expect(responseBody[1])
-        .to.be.an('object')
-        .that.includes({
-          username: 'wueyr890',
-          name: 'BJ',
-          password: 'xxxxxxx'
-        });
-      done();
+// The API object contains methods for each kind of request we'll make
+var API = {
+  addUser: function(user) {
+    return $.ajax({
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      type: 'POST',
+      url: 'api/users',
+      data: JSON.stringify(user)
     });
+  },
+  getExamples: function() {
+    return $.ajax({
+      url: 'api/examples',
+      type: 'GET'
+    });
+  },
+  deleteExample: function(id) {
+    return $.ajax({
+      url: 'api/examples/' + id,
+      type: 'DELETE'
+    });
+  }
+};
+
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
+      var $a = $('<a>')
+        .text(example.text)
+        .attr('href', '/example/' + example.id);
+
+      var $li = $('<li>')
+        .attr({
+          class: 'list-group-item',
+          'data-id': example.id
+        })
+        .append($a);
+
+      var $button = $('<button>')
+        .addClass('btn btn-danger float-right delete')
+        .text('ｘ');
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $exampleList.empty();
+    $exampleList.append($examples);
   });
-});
+};
+
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleFormSubmit = function(event) {
+  event.preventDefault();
+
+  var example = {
+    text: $exampleText.val().trim(),
+    description: $exampleDescription.val().trim()
+  };
+
+  if (!(example.text && example.description)) {
+    alert('You must enter an example text and description!');
+    return;
+  }
+
+  API.saveExample(example).then(function() {
+    refreshExamples();
+  });
+
+  $exampleText.val('');
+  $exampleDescription.val('');
+};
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function() {
+  var idToDelete = $(this)
+    .parent()
+    .attr('data-id');
+
+  API.deleteExample(idToDelete).then(function() {
+    refreshExamples();
+  });
+};
+
+// Add event listeners to the submit and delete buttons
+$submitBtn.on('click', handleFormSubmit);
+$exampleList.on('click', '.delete', handleDeleteBtnClick);
+
+module.exports(API);
+
