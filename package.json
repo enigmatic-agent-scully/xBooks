@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "node_modules/mocha/bin/mocha ./tests",
     "start": "node server.js"
   },
   "repository": {
@@ -32,12 +32,14 @@
     "expect": "^23.6.0",
     "expect.js": "^0.3.1",
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.12",
     "heroku": "^7.19.3",
     "mocha": "^5.2.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "superagent": "^4.0.0",
+    "supertest": "^3.3.0"
   }
 }
