@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enigmatic-agent-scully/project2.git"
+    "url": "git+https://github.com/enigmatic-agent-scully/xBooks.git"
   },
   "keywords": [
     "library"
@@ -20,9 +20,9 @@
   "author": "aj, hayden, abdul, and andres",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enigmatic-agent-scully/project2/issues"
+    "url": "https://github.com/enigmatic-agent-scully/xBooks/issues"
   },
-  "homepage": "https://github.com/enigmatic-agent-scully/project2#readme",
+  "homepage": "https://github.com/enigmatic-agent-scully/xBooks#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
